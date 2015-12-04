@@ -1,0 +1,40 @@
+1. Un sistema transaccional que tenga mínimo 10 tablas 
+-	Arete, llevar a adornos 
+-	Reloj
+Bisutería: Mantenimiento de bisutería 
+Vender
+Alquilar
+Prestar
+Jueves: 
+1.	En dos hojas sin caratula, integrantes, nombre del sistema (Descripción sistema para…), palabras (arete, reloj), descripción detallada del sistema (módulos 3 párrafos), 1 hoja.
+2.	Hoja 2: modelo físico de base de datos para hacer el sistema.
+3.	Proyecto por capas, con jee … que funcione como el ing dice. 
+4.	Código fuente documentado
+
+Como Instalar:
+Jkd sea 7xx (java –versión y me debe salir el 7)
+2 servidores de aplicaciones (glasfish con versión 7) y Jboss EA  
+Maven funcionando
+Instalado una bd mysql
+Instalar Oracle
+MARTES:
+Traer Front Page de la aplicación impreso (Lo hacemos correr en el browser): Definir cuál es el Banner , Footer, Colores, Tipografía,. Clases de persistencia (ejb, new, other, persistence, persistence unit, (Persistence unit name: punit, persistence provider: jpa2.1,table generator estrategy: none, nuw datasource JNDI Name: jdbc_))
+Acceso a datos: por cada tabla que tenga tengo una clase de acceso a datos
+Revisar Css para la aplicación 
+
+REVISAR 
+DAO
+TRANSACCIONALIDAD
+JSF (PLANTILLAS, ESTILOS, COMPONENTES)
+REPORTES EN JASPER
+CLASES DE PERSISTENCIA
+5 ENERO ENTREGA DEL PROYECTO
+Programa hecho en español e inglés.
+
+Opiniones de las películas o documentales
+
+Recomedaciones ver (Sirve para revisar el codigo):
+Índice de complejidad ciclomatica
+FindBugs  Encontrar errores en el software
+CheckStyle  Encontrar errores en el software
+Selenium permite hacer test de la interfaz grafica
