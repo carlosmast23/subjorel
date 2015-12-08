@@ -20,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "SUSCRIPCION_VENDEDOR_05")
-public class SUSCRIPCION_VENDEDOR_05 implements Serializable{
+public class SuscripcionVendedor implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -73,7 +73,7 @@ public class SUSCRIPCION_VENDEDOR_05 implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final SUSCRIPCION_VENDEDOR_05 other = (SUSCRIPCION_VENDEDOR_05) obj;
+        final SuscripcionVendedor other = (SuscripcionVendedor) obj;
         if (!Objects.equals(this.codigo_sus, other.codigo_sus)) {
             return false;
         }

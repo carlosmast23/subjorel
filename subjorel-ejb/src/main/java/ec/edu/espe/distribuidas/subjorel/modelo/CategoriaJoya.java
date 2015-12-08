@@ -20,20 +20,20 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "SUSCRIPCION_SUBASTA_05")
-public class SUSCRIPCION_SUBASTA_05 implements Serializable{
+@Table(name = "CATEGORIA_JOYA_05")
+public class CategoriaJoya implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     
-    @Column(name = "suscripcion_id", nullable = false)    
+    @Column(name = "categoria_id", nullable = false)    
     private Integer codigo;
     
-    @Column(name = "nick", nullable = false)    
-    private String nick;
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
     
-    @Column(name = "subasta_id", nullable = false)
-    private Integer codigo_sub;
+    @Column(name = "descripcion", nullable = false)    
+    private String descripcion;
 
     public Integer getCodigo() {
         return codigo;
@@ -43,26 +43,26 @@ public class SUSCRIPCION_SUBASTA_05 implements Serializable{
         this.codigo = codigo;
     }
 
-    public String getNick() {
-        return nick;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNick(String nick) {
-        this.nick = nick;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public Integer getCodigo_sub() {
-        return codigo_sub;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setCodigo_sub(Integer codigo_sub) {
-        this.codigo_sub = codigo_sub;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 31 * hash + Objects.hashCode(this.codigo);
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.codigo);
         return hash;
     }
 
@@ -74,7 +74,7 @@ public class SUSCRIPCION_SUBASTA_05 implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final SUSCRIPCION_SUBASTA_05 other = (SUSCRIPCION_SUBASTA_05) obj;
+        final CategoriaJoya other = (CategoriaJoya) obj;
         if (!Objects.equals(this.codigo, other.codigo)) {
             return false;
         }
@@ -83,8 +83,8 @@ public class SUSCRIPCION_SUBASTA_05 implements Serializable{
 
     @Override
     public String toString() {
-        return "SUSCRIPCION_SUBASTA_05{" + "codigo=" + codigo + ", nick=" + nick + ", codigo_sub=" + codigo_sub + '}';
+        return "CATEGORIA_JOYA_05{" + "codigo=" + codigo + ", nombre=" + nombre + ", descripcion=" + descripcion + '}';
     }
-
-    
+       
 }
+

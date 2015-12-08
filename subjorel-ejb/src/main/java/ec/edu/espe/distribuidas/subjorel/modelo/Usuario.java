@@ -23,7 +23,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "USUARIO_05")
-public class USUARIO_05 implements Serializable{
+public class Usuario implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -111,7 +111,7 @@ public class USUARIO_05 implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final USUARIO_05 other = (USUARIO_05) obj;
+        final Usuario other = (Usuario) obj;
         if (!Objects.equals(this.nick, other.nick)) {
             return false;
         }

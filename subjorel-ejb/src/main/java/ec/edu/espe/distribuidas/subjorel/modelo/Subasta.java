@@ -23,7 +23,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "SUBASTA_05")
-public class SUBASTA_05 implements Serializable{
+public class Subasta implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -156,7 +156,7 @@ public class SUBASTA_05 implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final SUBASTA_05 other = (SUBASTA_05) obj;
+        final Subasta other = (Subasta) obj;
         if (!Objects.equals(this.codigo, other.codigo)) {
             return false;
         }

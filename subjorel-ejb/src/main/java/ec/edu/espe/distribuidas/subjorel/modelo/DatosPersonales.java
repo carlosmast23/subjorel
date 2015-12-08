@@ -22,7 +22,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "DATOS_PERSONALES_05")
-public class DATOS_PERSONALES_05 implements Serializable{
+public class DatosPersonales implements Serializable{
  
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -142,7 +142,7 @@ public class DATOS_PERSONALES_05 implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final DATOS_PERSONALES_05 other = (DATOS_PERSONALES_05) obj;
+        final DatosPersonales other = (DatosPersonales) obj;
         if (!Objects.equals(this.codigo, other.codigo)) {
             return false;
         }

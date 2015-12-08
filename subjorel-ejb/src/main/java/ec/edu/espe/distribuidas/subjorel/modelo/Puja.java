@@ -21,28 +21,32 @@ import javax.persistence.Temporal;
  *
  * @author Cristhy Alejandra
  */
+
 @Entity
-@Table(name = "MOVIMIENTO_05")
-public class MOVIMIENTO_05 implements Serializable{
+@Table(name = "PUJA_05")
+public class Puja implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
-    @Column(name = "movimiento_id", nullable = false)    
+
+    @Column(name = "puja_id", nullable = false)    
     private Integer codigo;
     
-    @Column(name = "nick", nullable = false)
-    private String nick;
-        
+    @Column(name = "movimiento_id", nullable = false)    
+    private Integer codigo_mov; 
+    
+    @Column(name = "suscripcion_id", nullable = false)    
+    private Integer codigo_sus;    
+    
     @Column(name = "monto", nullable = false)
     private BigDecimal monto;
     
-    @Column(name = "saldo", nullable = false)
-    private BigDecimal saldo;
-    
-    @Column(name = "fecha_movimiento", nullable = false)
+    @Column(name = "fecha", nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date fecha_movimiento;
+    private Date fecha;
+    
+    @Column(name = "orden_puja", nullable = false)    
+    private Integer orden_puja;
 
     public Integer getCodigo() {
         return codigo;
@@ -52,12 +56,20 @@ public class MOVIMIENTO_05 implements Serializable{
         this.codigo = codigo;
     }
 
-    public String getNick() {
-        return nick;
+    public Integer getCodigo_mov() {
+        return codigo_mov;
     }
 
-    public void setNick(String nick) {
-        this.nick = nick;
+    public void setCodigo_mov(Integer codigo_mov) {
+        this.codigo_mov = codigo_mov;
+    }
+
+    public Integer getCodigo_sus() {
+        return codigo_sus;
+    }
+
+    public void setCodigo_sus(Integer codigo_sus) {
+        this.codigo_sus = codigo_sus;
     }
 
     public BigDecimal getMonto() {
@@ -68,26 +80,26 @@ public class MOVIMIENTO_05 implements Serializable{
         this.monto = monto;
     }
 
-    public BigDecimal getSaldo() {
-        return saldo;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public void setSaldo(BigDecimal saldo) {
-        this.saldo = saldo;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
-    public Date getFecha_movimiento() {
-        return fecha_movimiento;
+    public Integer getOrden_puja() {
+        return orden_puja;
     }
 
-    public void setFecha_movimiento(Date fecha_movimiento) {
-        this.fecha_movimiento = fecha_movimiento;
+    public void setOrden_puja(Integer orden_puja) {
+        this.orden_puja = orden_puja;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 47 * hash + Objects.hashCode(this.codigo);
+        hash = 89 * hash + Objects.hashCode(this.codigo);
         return hash;
     }
 
@@ -99,7 +111,7 @@ public class MOVIMIENTO_05 implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final MOVIMIENTO_05 other = (MOVIMIENTO_05) obj;
+        final Puja other = (Puja) obj;
         if (!Objects.equals(this.codigo, other.codigo)) {
             return false;
         }
@@ -108,7 +120,7 @@ public class MOVIMIENTO_05 implements Serializable{
 
     @Override
     public String toString() {
-        return "MOVIMIENTO_05{" + "codigo=" + codigo + ", nick=" + nick + ", monto=" + monto + ", saldo=" + saldo + ", fecha_movimiento=" + fecha_movimiento + '}';
+        return "PUJA_05{" + "codigo=" + codigo + ", codigo_mov=" + codigo_mov + ", codigo_sus=" + codigo_sus + ", monto=" + monto + ", fecha=" + fecha + ", orden_puja=" + orden_puja + '}';
     }
 
     
