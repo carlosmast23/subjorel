@@ -5,7 +5,7 @@
  */
 package ec.edu.espe.distribuidas.subjorel.dao;
 
-import ec.edu.espe.distribuidas.subjorel.modelo.DatosPersonales;
+import ec.edu.espe.distribuidas.subjorel.modelo.DATOS_PERSONALES_05;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author Carlos
  */
 @Stateless
-public class DatosPersonalesFacade extends AbstractFacade<DatosPersonales>
+public class DatosPersonalesFacade extends AbstractFacade<DATOS_PERSONALES_05>
 {
     @PersistenceContext(unitName = "ec.edu.espe.distribuidas_subjorel-ejb_ejb_1PU")
     //@PersistenceContext
@@ -23,7 +23,7 @@ public class DatosPersonalesFacade extends AbstractFacade<DatosPersonales>
       
     public DatosPersonalesFacade() 
     {
-        super(DatosPersonales.class);
+        super(DATOS_PERSONALES_05.class);
     }
 
     @Override
