@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -35,6 +37,14 @@ public class SuscripcionSubasta implements Serializable{
     @Column(name = "subasta_id", nullable = false)
     private Integer codigo_sub;
 
+    @JoinColumn(name = "nick", referencedColumnName = "nick", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Usuario usuario;
+    
+    @JoinColumn(name = "subasta_id", referencedColumnName = "subasta_id", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Subasta subasta;
+    
     public Integer getCodigo() {
         return codigo;
     }
@@ -59,6 +69,7 @@ public class SuscripcionSubasta implements Serializable{
         this.codigo_sub = codigo_sub;
     }
 
+    
     @Override
     public int hashCode() {
         int hash = 5;
@@ -81,6 +92,7 @@ public class SuscripcionSubasta implements Serializable{
         return true;
     }
 
+        
     @Override
     public String toString() {
         return "SUSCRIPCION_SUBASTA_05{" + "codigo=" + codigo + ", nick=" + nick + ", codigo_sub=" + codigo_sub + '}';

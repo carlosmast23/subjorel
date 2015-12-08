@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -42,6 +44,10 @@ public class Joya implements Serializable{
     @Column(name = "descripcion", nullable = false)
     private String descripcion;
 
+    @JoinColumn(name = "categoria_id", referencedColumnName = "categoria_id", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private CategoriaJoya categoria;
+    
     public Integer getCodigo() {
         return codigo;
     }
@@ -81,7 +87,8 @@ public class Joya implements Serializable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
+   
+    
     @Override
     public int hashCode() {
         int hash = 3;

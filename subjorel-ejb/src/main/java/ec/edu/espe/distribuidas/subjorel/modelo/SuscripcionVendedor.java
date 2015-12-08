@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -33,6 +35,10 @@ public class SuscripcionVendedor implements Serializable{
     
     @Column(name = "privacidad", nullable = false)
     private String privacidad;
+    
+    @JoinColumn(name = "nick", referencedColumnName = "nick", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Usuario usuario;
 
     public String getCodigo_sus() {
         return codigo_sus;

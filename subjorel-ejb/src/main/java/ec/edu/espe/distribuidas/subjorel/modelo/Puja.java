@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -47,6 +49,14 @@ public class Puja implements Serializable{
     
     @Column(name = "orden_puja", nullable = false)    
     private Integer orden_puja;
+    
+    @JoinColumn(name = "movimiento_id", referencedColumnName = "movimiento_id", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Movimiento movimiento;
+    
+    @JoinColumn(name = "suscripcion_id", referencedColumnName = "suscripcion_id", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private SuscripcionSubasta subasta;
 
     public Integer getCodigo() {
         return codigo;
@@ -95,7 +105,7 @@ public class Puja implements Serializable{
     public void setOrden_puja(Integer orden_puja) {
         this.orden_puja = orden_puja;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 7;

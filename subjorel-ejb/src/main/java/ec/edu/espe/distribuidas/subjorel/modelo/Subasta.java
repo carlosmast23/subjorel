@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -60,6 +62,18 @@ public class Subasta implements Serializable{
     @Column(name = "tiempo", nullable = false)
     @Temporal(javax.persistence.TemporalType.TIME)
     private Date tiempo;
+    
+    @JoinColumn(name = "suscripcion_vendedor_id", referencedColumnName = "suscripcion_vendedor_id", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private SuscripcionVendedor vendedor;
+    
+    @JoinColumn(name = "joya_id", referencedColumnName = "joya_id", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Joya joya;
+    
+    @JoinColumn(name = "movimiento_id", referencedColumnName = "movimiento_id", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Movimiento movimiento;
 
     public Integer getCodigo() {
         return codigo;
