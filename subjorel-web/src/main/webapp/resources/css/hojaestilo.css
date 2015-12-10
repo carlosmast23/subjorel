@@ -1,0 +1,46 @@
+@charset "utf-8";
+body {
+    background-image: url("#{request.contextPath}/resources/img/fondoFundecreb.jpg");
+    font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+    background-repeat:no-repeat;
+    background-position:top;
+    margin: 0;
+    padding: 0;
+    color: #000;
+    background-attachment: fixed;
+    overflow: scroll;
+}
+
+.content {
+	padding-top:0px;
+	padding-bottom:10px;
+	width: 725px;
+	float: right;
+        background-color: #ffffff;
+	
+}
+.container {
+	
+	width: 960px;
+        background-color: #ffffff;
+	margin: 0 auto; /* el valor automático de los lados, unido a la anchura, centra el diseño  */
+}
+
+footer {
+	
+	padding: 1px 0px 15px 0px;
+	background-color: #3d8f3f;
+	position: relative;/* esto da a IE6 el parámetro hasLayout para borrar correctamente */
+	clear: both; /* esta propiedad de borrado fuerza a .container a conocer dónde terminan las columnas y a contenerlas */
+	text-align: center;
+	font-weight: bolder;	
+        color: #ffffff;
+        height: 30px;
+}
+
+.sidebar1 {
+	float: right;
+	width: 235px;
+	background-color:rgba(255,255,255,1.00);
+	padding-bottom: 10px;
+}

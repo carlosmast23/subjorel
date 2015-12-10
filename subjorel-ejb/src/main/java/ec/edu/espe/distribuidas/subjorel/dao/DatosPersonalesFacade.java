@@ -17,7 +17,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class DatosPersonalesFacade extends AbstractFacade<DatosPersonales>
 {
-    @PersistenceContext(unitName = "ec.edu.espe.distribuidas_subjorel-ejb_ejb_1PU")
+    @PersistenceContext(unitName = "subjorel_unit_name")
     //@PersistenceContext
     private EntityManager em;
       

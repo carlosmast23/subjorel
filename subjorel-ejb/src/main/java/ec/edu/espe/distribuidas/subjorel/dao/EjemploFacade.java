@@ -30,6 +30,10 @@ public class EjemploFacade extends AbstractFacade<Ejemplo>
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+    public int addNumbers(int numberA, int numberB) {
+        return numberA - numberB;
+    }
 
     
 }

@@ -20,6 +20,23 @@
     </properties>
 
     <dependencies>
+        <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>3.0</version>
+        </dependency>
+        
+        <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>1.9.2</version>
+        </dependency>
+        
+        <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.0</version>
+        </dependency>
 
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
@@ -35,8 +52,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.2</version>
-            <scope>test</scope>
+            <version>4.10</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
@@ -44,6 +60,32 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
+        
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.5</version>        
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>2.5</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.glassfish.extras</groupId> 
+            <artifactId>glassfish-embedded-all</artifactId> 
+            <version>3.0</version> 
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>2.3</version>
+        </dependency>
+
+        
     </dependencies>
 
     <build>
