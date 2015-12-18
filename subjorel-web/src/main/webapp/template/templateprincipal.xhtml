@@ -30,35 +30,34 @@
                 
             <div class="sidebar1">
                 <p:menu>
-                    <p:submenu label="Ajax">
-                        <p:menuitem value="Save" actionListener="#{menuView.save}" update="messages" icon="ui-icon-disk" />
-                        <p:menuitem value="Update" actionListener="#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
+                    <p:submenu label="Menu">
+                        <p:menuitem value="Comprar" actionListener="#{menuView.save}" update="messages" icon="ui-icon-disk" />
+                        <p:menuitem value="Subastar" actionListener="#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
                     </p:submenu>
-                    <p:submenu label="Non-Ajax">
-                        <p:menuitem value="Delete" actionListener="#{menuView.delete}" update="messages" ajax="false" icon="ui-icon-close"/>
+                    <p:submenu label="Login">
+                        <p:menuitem value="Registrarse" actionListener="#{menuView.delete}" update="messages" ajax="false" icon="ui-icon-close"/>
                     </p:submenu>
-                    <p:submenu label="Navigations">
-                        <p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/>
-                        <p:menuitem value="Internal"  icon="ui-icon-star"/>
+                    <p:submenu label="Contactos">
+                        <p:menuitem value="Información" url="http://www.primefaces.org" icon="ui-icon-home"/>
+                        <p:menuitem value="Ayuda"  icon="ui-icon-star"/>
                     </p:submenu>
                 </p:menu>                
             </div>
             </h:form>     
             
             <article class="content">
-                <p:panel id="basic" header="Basic" footer="Movie Details" style="margin-bottom:20px">
+                <p:panel id="basic" header="Información" footer="Seguir Leyendo ..." style="margin-bottom:20px">
                     <h:panelGrid columns="2" cellpadding="10">
-                        <p:graphicImage name="demo/images/godfather/godfather1.jpg" />
-                        <h:outputText value="The story begins as Don Vito Corleone..." />
-                        <h:outputText value="The story begins as Don Vito Corleone..." />
-                        <h:outputText value="The story begins as Don Vito Corleone..." />
-                        <h:outputText value="The story begins as Don Vito Corleone..." />
+                        <h:outputText value="SubJorel es una pagina de subastas de Joyeria donde puede obtener los mejores productos a excelentes precios." />
+                        <h:outputText value="Aprovecha nuestros subatas por temporada , con hasta el 15% en todos los productos subastados." />
+                        <h:outputText value="Quiere saber como formar parte de nuestro grupo de SubJorel no te preocupes busca mas informacion en este link" />
+                        <h:outputText value="No sabes que regalar esta navidad en SubJorel , tenemos ese regalo que enamora" />
                     </h:panelGrid>
                 </p:panel>
             </article>
             
             <footer>
-            <p>© Copyright 2015 Fundecreb All rights reserved.</p>
+            <p>© Copyright 2015 SubJorel All rights reserved.</p>
 
             </footer>
             
