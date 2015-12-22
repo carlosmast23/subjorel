@@ -4,10 +4,25 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
     <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
+        <from-view-id>/login.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>template</from-outcome>
             <to-view-id>/template/templateprincipal.xhtml</to-view-id>
+        </navigation-case>        
+
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>indexadmin</from-outcome>
+            <to-view-id>/admin/index.xhtml</to-view-id>
         </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>categoriaadmin</from-outcome>
+            <to-view-id>/admin/categoria.xhtml</to-view-id>
+        </navigation-case>        
+        
     </navigation-rule>
 </faces-config>

@@ -60,4 +60,8 @@ public class JoyaServicio {
         throw new ValidacionException("No se puede eliminar la joya seleccionada");
         }
     }
+
+    public void obtenerPorId(String value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

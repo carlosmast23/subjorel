@@ -63,4 +63,19 @@ public class UsuarioServicio {
         throw new ValidacionException("No se puede eliminar el usuario");
         }
     }
+
+    public boolean login(String nick, String clave) 
+    {
+        Usuario usuario=obtenerPorId(nick);
+        if(usuario!=null)
+        {
+            if(usuario.getClave().equals(clave))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }

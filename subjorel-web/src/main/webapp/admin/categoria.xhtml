@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui"
+                template="../template/templateadmin.xhtml">
+    
+    <ui:define name="contenido">
+        <f:view>
+            <h:form id="form">
+                <p:growl id="growl" showDetail="true" life="2000" />
+                <p:panel id="panelBotones" header="CATEGORIA"  style="margin-bottom:20px;text-align: center" rendered="True" >            
+                    <p:spacer height="10px"/>
+                    <p:commandButton value="Nuevo" update="panelDatos,panelBotones" disabled="#{categoriaJoyaMB.btnNuevo}" actionListener="#{categoriaJoyaMB.nuevo()}"  />
+                    <p:commandButton value="Modificar" update="panelDatos,panelBotones" disabled="#{categoriaJoyaMB.btnEditar}" actionListener="#{categoriaJoyaMB.editar()}" />
+                    <p:commandButton value="Eliminar" update="panelTabla,growl" disabled="#{categoriaJoyaMB.btnEliminar}" actionListener="#{categoriaJoyaMB.eliminar()}"  icon="ui-icon-close" title="Eliminar"/>
+                </p:panel>    
+                <p:panel id="panelDatos" header="#{categoriaJoyaMB.nombrePanelDatos}" style="margin-bottom:20px;text-align: center" visible="#{categoriaJoyaMB.datosVisibles}"   >
+
+                    <p:panelGrid columns="2" style=" margin: 0 auto;">
+                        <p:outputLabel for="id" value="ID:"/>
+                        <p:inputText id="id" value="#{categoriaJoyaMB.entidad.codigo}"  />
+                        
+                        <p:outputLabel for="nombre" value="Nombre:"/>
+                        <p:inputText id="nombre" value="#{categoriaJoyaMB.entidad.nombre}"  />
+                        
+                        <p:outputLabel for="texto" value="Descripcion:"/>                        
+                        <p:inputText id="texto" value="#{categoriaJoyaMB.entidad.descripcion}"     />
+                        
+                        <p:commandButton value="Grabar" update="panelTabla,panelDatos,panelBotones,growl" actionListener="#{categoriaJoyaMB.grabar()}"   />
+                        <p:commandButton value="Cancelar" update="panelDatos,panelBotones,growl" actionListener="#{categoriaJoyaMB.cancelar()}"  />
+                    </p:panelGrid>    
+                </p:panel>
+                <p:panel id="panelTabla" header="Tabla"  style="margin-bottom:20px" rendered="True">
+
+                    <p:dataTable var="ejemplo" value="#{categoriaJoyaMB.lista}" selectionMode="single" selection="#{categoriaJoyaMB.entidadSelecionada}" rowKey="#{ejemplo.codigo}" >
+
+                        <p:ajax event="rowSelect" listener="#{categoriaJoyaMB.onRowSelect}" update=":form:growl" />
+                        <p:ajax event="rowUnselect" listener="#{categoriaJoyaMB.onRowUnselect}" update=":form:growl" />
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{ejemplo.nombre}"  />
+                        </p:column>
+
+                        <p:column headerText="Descripcion">
+                            <h:outputText value="#{ejemplo.descripcion}" />
+                        </p:column>   
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+       </f:view>
+    </ui:define>
+</ui:composition>

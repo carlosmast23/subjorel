@@ -45,6 +45,7 @@
             <groupId>ec.edu.espe.distribuidas</groupId>
             <artifactId>subjorel-ejb</artifactId>
             <version>1</version>
+            <scope>provided</scope>
             <type>ejb</type>
         </dependency>
         <dependency>

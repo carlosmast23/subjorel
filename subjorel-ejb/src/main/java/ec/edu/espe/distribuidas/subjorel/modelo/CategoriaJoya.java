@@ -20,12 +20,11 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "CATEGORIA_JOYA_05")
+@Table(name = "categoria_joya_05")
 public class CategoriaJoya implements Serializable{
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)    
     @Column(name = "categoria_id", nullable = false)    
     private Integer codigo;
     
@@ -83,7 +82,8 @@ public class CategoriaJoya implements Serializable{
 
     @Override
     public String toString() {
-        return "CATEGORIA_JOYA_05{" + "codigo=" + codigo + ", nombre=" + nombre + ", descripcion=" + descripcion + '}';
+        //return "CATEGORIA_JOYA_05{" + "codigo=" + codigo + ", nombre=" + nombre + ", descripcion=" + descripcion + '}';
+        return nombre;
     }
        
 }

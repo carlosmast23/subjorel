@@ -17,15 +17,16 @@ import javax.ejb.Stateless;
  *
  * @author Cristhy Alejandra
  */
-@LocalBean 
-@Stateless 
 
+@Stateless 
+@LocalBean 
 public class CategoriaJoyaServicio 
 {
- @EJB
+    @EJB
     private CategoriaJoyaDAO categoriaJoyaDAO;
      
-     public List<CategoriaJoya>obtenerTodas(){
+    public List<CategoriaJoya>obtenerTodas()
+    {
         return this.categoriaJoyaDAO.findAll();
     }
     
@@ -47,6 +48,20 @@ public class CategoriaJoyaServicio
             throw new ValidacionException("La categoría de la joya "+categoriaJoya.getCodigo()+" ya existe");
         }
     
+    }
+    
+    public void editarCategoria(CategoriaJoya categoriaJoya)
+    {
+        //CategoriaJoya sedetmp = this.obtenerPorId(categoriaJoya.getCodigo());
+        this.categoriaJoyaDAO.update(categoriaJoya);
+       // if (sedetmp!=null)
+       // {
+        //    this.categoriaJoyaDAO.update(categoriaJoya);
+       // }
+       // else
+       // {
+        //    throw new ValidacionException("La categoría de la joya "+categoriaJoya.getCodigo()+" no existe pra modificar");
+        //}
     }
     
     public void eliminarCategoria(Integer codigoCategoria)
