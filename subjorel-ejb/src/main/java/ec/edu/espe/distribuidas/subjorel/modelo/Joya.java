@@ -27,7 +27,7 @@ public class Joya implements Serializable{
     
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     
     @Column(name = "joya_id", nullable = false)    
     private Integer codigo;
@@ -87,7 +87,16 @@ public class Joya implements Serializable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    public CategoriaJoya getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(CategoriaJoya categoria) {
+        this.categoria = categoria;
+    }
    
+    
     
     @Override
     public int hashCode() {

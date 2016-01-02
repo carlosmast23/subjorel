@@ -23,9 +23,9 @@
                         <p:inputText id="id" value="#{joyaMB.entidad.codigo}"  />
                         
                         <p:outputLabel for="Categoria" value="Categoria: " />
-                        <p:selectOneMenu id="Categoria" value="#{joyaMB.categoriaJoya}" style="width:150px">
+                        <p:selectOneMenu id="Categoria" value="#{joyaMB.entidad.codigo_cat}" style="width:150px">
                             <f:selectItem itemLabel="Seleccione la categoria" itemValue="" />
-                            <f:selectItems value="#{joyaMB.listaCategoria}"   />
+                            <f:selectItems var="joya" value="#{joyaMB.listaCategoria}" itemValue="#{joya.codigo}" itemLabel="#{joya.nombre}"   />
                         </p:selectOneMenu>
                         
                         
@@ -46,7 +46,7 @@
                         <p:ajax event="rowSelect" listener="#{joyaMB.onRowSelect}" update=":form:growl" />
                         <p:ajax event="rowUnselect" listener="#{joyaMB.onRowUnselect}" update=":form:growl" />
                         <p:column headerText="Categoria">
-                            <h:outputText value="#{ejemplo.codigo_cat}"  />
+                            <h:outputText value="#{ejemplo.categoria.nombre}"  />
                         </p:column>
                         
                         <p:column headerText="Nombre">
