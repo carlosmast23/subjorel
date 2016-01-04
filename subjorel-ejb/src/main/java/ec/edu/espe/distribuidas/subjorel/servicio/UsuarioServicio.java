@@ -5,13 +5,17 @@
  */
 package ec.edu.espe.distribuidas.subjorel.servicio;
 
+import ec.edu.espe.distribuidas.subjorel.dao.DatosPersonalesDAO;
 import ec.edu.espe.distribuidas.subjorel.dao.UsuarioDAO;
 import ec.edu.espe.distribuidas.subjorel.exception.ValidacionException;
+import ec.edu.espe.distribuidas.subjorel.modelo.DatosPersonales;
 import ec.edu.espe.distribuidas.subjorel.modelo.Usuario;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 
 /**
  *
@@ -20,13 +24,16 @@ import javax.ejb.Stateless;
 
 @LocalBean 
 @Stateless  
-
 public class UsuarioServicio {
     
-     @EJB
+    @EJB
     private UsuarioDAO usuarioDAO;
+   
+    @EJB
+    private DatosPersonalesDAO datosPersonalesDAO;
+    
      
-     public List<Usuario>obtenerTodas(){
+    public List<Usuario>obtenerTodas(){
         return this.usuarioDAO.findAll();
     }
     
@@ -50,6 +57,30 @@ public class UsuarioServicio {
     
     }
     
+    /**
+     * Crea un usuario junto a los datos personales
+     * @param usuario
+     * @param datos 
+     */
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    public void crearUsuarioDatos(Usuario usuario, DatosPersonales datos)
+    {
+        //throw new ValidacionException("!El usuario ya existe en la base de datos!");
+        System.out.println(usuario);
+        Usuario sedetmp = this.obtenerPorId(usuario.getNick());
+        if(sedetmp==null)
+        {
+            usuarioDAO.insert(usuario);        
+            datos.setUsuario(usuario);
+            datosPersonalesDAO.insert(datos);
+        }
+        else
+        {
+            throw new ValidacionException("El usuario ya existe en la base de datos");
+        }
+       
+    }
+    
     public void eliminarUsuario(String codigoUsuario)
     {
         try 
@@ -60,7 +91,7 @@ public class UsuarioServicio {
         
         catch (Exception e)
         {
-        throw new ValidacionException("No se puede eliminar el usuario");
+            throw new ValidacionException("No se puede eliminar el usuario");
         }
     }
 

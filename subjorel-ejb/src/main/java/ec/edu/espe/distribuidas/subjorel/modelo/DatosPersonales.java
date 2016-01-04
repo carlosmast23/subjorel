@@ -27,13 +27,11 @@ import javax.persistence.Temporal;
 public class DatosPersonales implements Serializable{
  
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
     @Column(name = "datos_personales_id", nullable = false)    
     private String codigo;
     
-    @Column(name = "nick", nullable = false)
-    private String nick;
+    //@Column(name = "nick", nullable = false)
+    //private String nick;
     
     @Column(name = "nombre", nullable = false)    
     private String nombre;
@@ -58,8 +56,8 @@ public class DatosPersonales implements Serializable{
     private String email;
 
     
-    @JoinColumn(name = "nick", referencedColumnName = "nick", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne
+    @JoinColumn(name="nick")
     private Usuario usuario;
     
     
@@ -71,13 +69,13 @@ public class DatosPersonales implements Serializable{
         this.codigo = codigo;
     }
 
-    public String getNick() {
-        return nick;
-    }
+    //public String getNick() {
+    //    return nick;
+   // }
 
-    public void setNick(String nick) {
-        this.nick = nick;
-    }
+   // public void setNick(String nick) {
+    //    this.nick = nick;
+   // }
 
     public String getNombre() {
         return nombre;
@@ -135,6 +133,15 @@ public class DatosPersonales implements Serializable{
         this.email = email;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -159,7 +166,7 @@ public class DatosPersonales implements Serializable{
 
     @Override
     public String toString() {
-        return "DATOS_PERSONALES_05{" + "codigo=" + codigo + ", nick=" + nick + ", nombre=" + nombre + ", apellido=" + apellido + ", sexo=" + sexo + ", direccion=" + direccion + ", telefono=" + telefono + ", fecha_nacimiento=" + fecha_nacimiento + ", email=" + email + '}';
+        return "DATOS_PERSONALES_05{" + "codigo=" + codigo + ", nick=" + usuario.getNick() + ", nombre=" + nombre + ", apellido=" + apellido + ", sexo=" + sexo + ", direccion=" + direccion + ", telefono=" + telefono + ", fecha_nacimiento=" + fecha_nacimiento + ", email=" + email + '}';
     }
     
     

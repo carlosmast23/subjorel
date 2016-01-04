@@ -8,8 +8,10 @@ package ec.edu.espe.distribuidas.web;
 import ec.edu.espe.distribuidas.subjorel.servicio.UsuarioServicio;
 import java.io.Serializable;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -27,10 +29,13 @@ public class Login implements Serializable
 
     public String login()
     {
+        FacesContext context = FacesContext.getCurrentInstance();
         if(servicio.login(nick, clave))
-        {
+        {            
+            context.addMessage(null, new FacesMessage("Bienvenido al Sistema Subjorel","!Buen dia!"));
             return "indexadmin";
         }
+        context.addMessage(null, new FacesMessage("El usuario o clave son incorrectos","!Vuelva a intentar!"));
         return "login";
     }
     

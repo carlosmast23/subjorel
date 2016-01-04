@@ -5,11 +5,15 @@
  */
 package ec.edu.espe.distribuidas.subjorel.exception;
 
+import javax.ejb.ApplicationException;
+
 /**
  *
  * @author Cristhy Alejandra
  */
-public class ValidacionException extends RuntimeException{
+@ApplicationException(rollback = true,inherited = true)
+public class ValidacionException extends RuntimeException
+{
     public ValidacionException(String message)
     {
         super(message);
