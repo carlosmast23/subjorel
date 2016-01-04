@@ -33,14 +33,14 @@ public class Subasta implements Serializable{
     @Column(name = "subasta_id", nullable = false)    
     private Integer codigo;
     
-    @Column(name = "suscripcion_vendedor_id", nullable = false)    
-    private Integer codigo_sus;
+    //@Column(name = "suscripcion_vendedor_id", nullable = false)    
+    //private Integer codigo_sus;
     
-    @Column(name = "joya_id", nullable = false)    
-    private Integer codigo_joya;
+   // @Column(name = "joya_id", nullable = false)    
+   // private Integer codigo_joya;
     
-    @Column(name = "movimiento_id", nullable = false)    
-    private Integer codigo_mov;
+    //@Column(name = "movimiento_id", nullable = false)    
+    //private Integer codigo_mov;
     
     @Column(name = "precio_base", nullable = false)
     private BigDecimal precio;
@@ -63,16 +63,22 @@ public class Subasta implements Serializable{
     @Temporal(javax.persistence.TemporalType.TIME)
     private Date tiempo;
     
-    @JoinColumn(name = "suscripcion_vendedor_id", referencedColumnName = "suscripcion_vendedor_id", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    //@JoinColumn(name = "suscripcion_vendedor_id", referencedColumnName = "suscripcion_vendedor_id", insertable = false, updatable = false)
+    //@ManyToOne(optional = false)
+    @ManyToOne
+    @JoinColumn(name="suscripcion_vendedor_id")
     private SuscripcionVendedor vendedor;
     
-    @JoinColumn(name = "joya_id", referencedColumnName = "joya_id", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    //@JoinColumn(name = "joya_id", referencedColumnName = "joya_id", insertable = false, updatable = false)
+    //@ManyToOne(optional = false)
+    @ManyToOne
+    @JoinColumn(name="joya_id")
     private Joya joya;
     
-    @JoinColumn(name = "movimiento_id", referencedColumnName = "movimiento_id", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    //@JoinColumn(name = "movimiento_id", referencedColumnName = "movimiento_id", insertable = false, updatable = false)
+    //@ManyToOne(optional = false)
+    @ManyToOne
+    @JoinColumn(name="movimiento_id")
     private Movimiento movimiento;
 
     public Integer getCodigo() {
@@ -83,29 +89,29 @@ public class Subasta implements Serializable{
         this.codigo = codigo;
     }
 
-    public Integer getCodigo_sus() {
-        return codigo_sus;
-    }
+   // public Integer getCodigo_sus() {
+   //     return codigo_sus;
+   // }
 
-    public void setCodigo_sus(Integer codigo_sus) {
-        this.codigo_sus = codigo_sus;
-    }
+   // public void setCodigo_sus(Integer codigo_sus) {
+   //     this.codigo_sus = codigo_sus;
+   // }
 
-    public Integer getCodigo_joya() {
-        return codigo_joya;
-    }
+   // public Integer getCodigo_joya() {
+   //     return codigo_joya;
+   // }
 
-    public void setCodigo_joya(Integer codigo_joya) {
-        this.codigo_joya = codigo_joya;
-    }
+   // public void setCodigo_joya(Integer codigo_joya) {
+   //     this.codigo_joya = codigo_joya;
+   // }
 
-    public Integer getCodigo_mov() {
-        return codigo_mov;
-    }
+    //public Integer getCodigo_mov() {
+      //  return codigo_mov;
+    //}
 
-    public void setCodigo_mov(Integer codigo_mov) {
-        this.codigo_mov = codigo_mov;
-    }
+    //public void setCodigo_mov(Integer codigo_mov) {
+      //  this.codigo_mov = codigo_mov;
+    //}
 
     public BigDecimal getPrecio() {
         return precio;
@@ -155,6 +161,32 @@ public class Subasta implements Serializable{
         this.tiempo = tiempo;
     }
 
+    public SuscripcionVendedor getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(SuscripcionVendedor vendedor) {
+        this.vendedor = vendedor;
+    }
+
+    public Joya getJoya() {
+        return joya;
+    }
+
+    public void setJoya(Joya joya) {
+        this.joya = joya;
+    }
+
+    public Movimiento getMovimiento() {
+        return movimiento;
+    }
+
+    public void setMovimiento(Movimiento movimiento) {
+        this.movimiento = movimiento;
+    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 5;
@@ -179,7 +211,7 @@ public class Subasta implements Serializable{
 
     @Override
     public String toString() {
-        return "SUBASTA_05{" + "codigo=" + codigo + ", codigo_sus=" + codigo_sus + ", codigo_joya=" + codigo_joya + ", codigo_mov=" + codigo_mov + ", precio=" + precio + ", monto=" + monto + ", fecha_ini=" + fecha_ini + ", fecha_fin=" + fecha_fin + ", categoria=" + categoria + ", tiempo=" + tiempo + '}';
+        return "SUBASTA_05{" + "codigo=" + codigo + ", codigo_sus=" + joya.getNombre() + ", codigo_joya=" + movimiento.getNick() + ", codigo_mov=" + movimiento.getMonto() + ", precio=" + precio + ", monto=" + monto + ", fecha_ini=" + fecha_ini + ", fecha_fin=" + fecha_fin + ", categoria=" + categoria + ", tiempo=" + tiempo + '}';
     }
 
     

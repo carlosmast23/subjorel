@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui"
+                template="../template/templateusuario.xhtml">
+
+    <ui:define name="contenido">
+        <h:form>
+            <p:growl id="growl" showDetail="true" sticky="true" /> 
+            <p:panel id="basic" header="Nueva Subasta"  style="margin-bottom:20px;text-align: center">
+                <p:accordionPanel>
+                    <p:tab title="Joya">
+                        <p:panelGrid columns="2" style=" margin: 0 auto;">
+                            <p:outputLabel for="Categoria" value="Categoria: " />
+                            <p:selectOneMenu id="Categoria" value="#{nuevaSubastaMB.categoriaSeleccionada}" >
+                                <f:selectItem itemLabel="Seleccione la categoria" itemValue="" />
+                                <f:selectItems var="joya" value="#{nuevaSubastaMB.lista}" itemValue="#{joya}" itemLabel="#{joya.nombre}"   />
+                            </p:selectOneMenu>
+                            <p:outputLabel for="nombre" value="Nombre:"/>
+                            <p:inputText id="nombre" required="true" value="#{nuevaSubastaMB.joya.nombre}" />
+                            <p:outputLabel for="descripcion" value="Descripcion:"/>
+                            <p:password id="descripcion" required="true" value="#{nuevaSubastaMB.joya.descripcion}"   />
+                        </p:panelGrid>
+                    </p:tab>
+                    <p:tab title="Subasta">
+                        <p:panelGrid columns="2" style=" margin: 0 auto;">
+                            <p:outputLabel for="precio" value="Precio Inicial:"/>
+                            <p:panelGrid columns="1">
+                                <p:inputText id="precio" value="#{nuevaSubastaMB.subasta.precio}" />
+                                <p:slider for="precio" />
+                            </p:panelGrid>
+                            
+                            <p:outputLabel for="categoriaPuja" value="Categoria:"/>
+                            <p:selectOneMenu id="categoriaPuja" value="#{nuevaSubastaMB.subasta.categoria}" style="width:100%">
+                                <f:selectItem itemLabel="Seleccione la categoria" itemValue="" />
+                                <f:selectItem itemLabel="Directa" itemValue="D" />
+                                <f:selectItem itemLabel="Inversa" itemValue="I" />
+                                <f:selectItem itemLabel="Sorpresa" itemValue="S" />
+                            </p:selectOneMenu>
+
+                            <p:outputLabel for="fechaFin" value="Fecha Fin:" />
+                            <p:calendar id="fechaFin" value="#{nuevaSubastaMB.subasta.fecha_fin}" pattern="MM/dd/yyyy HH:mm:ss" />
+
+                        </p:panelGrid>
+                    </p:tab>
+                </p:accordionPanel>
+
+                <p:spacer height="10px"/>
+
+                <div style="margin: 0 auto;">
+                    <p:commandButton value="Crear" action="#{login.login()}" ajax="false" />
+                </div>
+
+            </p:panel>
+        </h:form> 
+    </ui:define>
+</ui:composition>
