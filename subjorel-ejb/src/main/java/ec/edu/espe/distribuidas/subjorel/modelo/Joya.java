@@ -27,13 +27,12 @@ public class Joya implements Serializable{
     
     
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)    
     @Column(name = "joya_id", nullable = false)    
     private Integer codigo;
     
-    @Column(name = "categoria_id", nullable = false)    
-    private Integer codigo_cat;
+    //@Column(name = "categoria_id", nullable = false)    
+    //private Integer codigo_cat;
     
     @Column(name = "nombre", nullable = false)    
     private String nombre;
@@ -44,8 +43,8 @@ public class Joya implements Serializable{
     @Column(name = "descripcion", nullable = false)
     private String descripcion;
 
-    @JoinColumn(name = "categoria_id", referencedColumnName = "categoria_id", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne
+    @JoinColumn(name="categoria_id")
     private CategoriaJoya categoria;
     
     public Integer getCodigo() {
@@ -56,13 +55,13 @@ public class Joya implements Serializable{
         this.codigo = codigo;
     }
 
-    public Integer getCodigo_cat() {
-        return codigo_cat;
-    }
+//    public Integer getCodigo_cat() {
+ //       return codigo_cat;
+  //  }
 
-    public void setCodigo_cat(Integer codigo_cat) {
-        this.codigo_cat = codigo_cat;
-    }
+  //  public void setCodigo_cat(Integer codigo_cat) {
+  //      this.codigo_cat = codigo_cat;
+  //  }
 
     public String getNombre() {
         return nombre;
@@ -122,7 +121,7 @@ public class Joya implements Serializable{
 
     @Override
     public String toString() {
-        return "JOYA_05{" + "codigo=" + codigo + ", codigo_cat=" + codigo_cat + ", nombre=" + nombre + ", imagen=" + imagen + ", descripcion=" + descripcion + '}';
+        return "JOYA_05{" + "codigo=" + codigo + ", codigo_cat=" + categoria.getNombre() + ", nombre=" + nombre + ", imagen=" + imagen + ", descripcion=" + descripcion + '}';
     }
 
     

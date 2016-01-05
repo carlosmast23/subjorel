@@ -24,7 +24,7 @@ import javax.persistence.Table;
 public class CategoriaJoya implements Serializable{
     
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)    
     @Column(name = "categoria_id", nullable = false)    
     private Integer codigo;
     

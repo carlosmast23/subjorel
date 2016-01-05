@@ -8,8 +8,11 @@ package ec.edu.espe.distribuidas.web.usuario;
 import ec.edu.espe.distribuidas.subjorel.modelo.CategoriaJoya;
 import ec.edu.espe.distribuidas.subjorel.modelo.Joya;
 import ec.edu.espe.distribuidas.subjorel.modelo.Subasta;
+import ec.edu.espe.distribuidas.subjorel.modelo.Usuario;
 import ec.edu.espe.distribuidas.subjorel.servicio.CategoriaJoyaServicio;
 import ec.edu.espe.distribuidas.subjorel.servicio.JoyaServicio;
+import ec.edu.espe.distribuidas.subjorel.servicio.SubastaServicio;
+import ec.edu.espe.distribuidas.subjorel.servicio.UsuarioServicio;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -27,16 +30,23 @@ import javax.faces.bean.RequestScoped;
 public class NuevaSubastaMB implements Serializable{
     
     @EJB
+    private UsuarioServicio usuarioServicio;
+    
+    @EJB
     private JoyaServicio joyaServicio;
     
     @EJB
     private CategoriaJoyaServicio categoriaServicio;
+    
+    @EJB
+    private SubastaServicio subastaServicio;
     
     private Joya joya;
     private Subasta subasta;
     
     private List<CategoriaJoya> lista;
     private CategoriaJoya categoriaSeleccionada;
+    private Integer codigoCategoriaJoya;
     
     private Date fechaInicio;
     private Date fechaFin;
@@ -53,8 +63,13 @@ public class NuevaSubastaMB implements Serializable{
     }
     
     public void grabar()
-    {
-        
+    {   
+        CategoriaJoya categoria=categoriaServicio.obtenerPorId(codigoCategoriaJoya);
+        Usuario usuario=usuarioServicio.obtenerPorId("carlos");
+        joya.setCategoria(categoria);        
+        subasta.setVendedor(usuario);
+        System.out.println(joya);
+        subastaServicio.nuevaSubasta(subasta, joya);
     }
 
     public List<CategoriaJoya> getLista() {
@@ -103,6 +118,14 @@ public class NuevaSubastaMB implements Serializable{
 
     public void setSubasta(Subasta subasta) {
         this.subasta = subasta;
+    }
+
+    public Integer getCodigoJoya() {
+        return codigoCategoriaJoya;
+    }
+
+    public void setCodigoJoya(Integer codigoCategoriaJoya) {
+        this.codigoCategoriaJoya = codigoCategoriaJoya;
     }
 
     

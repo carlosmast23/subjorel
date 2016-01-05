@@ -14,9 +14,9 @@
                     <p:tab title="Joya">
                         <p:panelGrid columns="2" style=" margin: 0 auto;">
                             <p:outputLabel for="Categoria" value="Categoria: " />
-                            <p:selectOneMenu id="Categoria" value="#{nuevaSubastaMB.categoriaSeleccionada}" >
+                            <p:selectOneMenu id="Categoria" value="#{nuevaSubastaMB.codigoJoya}" >
                                 <f:selectItem itemLabel="Seleccione la categoria" itemValue="" />
-                                <f:selectItems var="joya" value="#{nuevaSubastaMB.lista}" itemValue="#{joya}" itemLabel="#{joya.nombre}"   />
+                                <f:selectItems var="joya" value="#{nuevaSubastaMB.lista}" itemValue="#{joya.codigo}" itemLabel="#{joya.nombre}"   />
                             </p:selectOneMenu>
                             <p:outputLabel for="nombre" value="Nombre:"/>
                             <p:inputText id="nombre" required="true" value="#{nuevaSubastaMB.joya.nombre}" />
@@ -50,7 +50,7 @@
                 <p:spacer height="10px"/>
 
                 <div style="margin: 0 auto;">
-                    <p:commandButton value="Crear" action="#{login.login()}" ajax="false" />
+                    <p:commandButton value="Crear" actionListener="#{nuevaSubastaMB.grabar()}" ajax="false" />
                 </div>
 
             </p:panel>

@@ -26,23 +26,22 @@ import javax.persistence.Table;
 public class SuscripcionSubasta implements Serializable{
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)    
     @Column(name = "suscripcion_id", nullable = false)    
     private Integer codigo;
     
-    @Column(name = "nick", nullable = false)    
-    private String nick;
+    //@Column(name = "nick", nullable = false)    
+    //private String nick;
     
-    @Column(name = "subasta_id", nullable = false)
-    private Integer codigo_sub;
+    //@Column(name = "subasta_id", nullable = false)
+    //private Integer codigo_sub;
 
-    @JoinColumn(name = "nick", referencedColumnName = "nick", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne
+    @JoinColumn(name="nick")
     private Usuario usuario;
     
-    @JoinColumn(name = "subasta_id", referencedColumnName = "subasta_id", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne
+    @JoinColumn(name="subasta_id")
     private Subasta subasta;
     
     public Integer getCodigo() {
@@ -53,22 +52,24 @@ public class SuscripcionSubasta implements Serializable{
         this.codigo = codigo;
     }
 
-    public String getNick() {
-        return nick;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setNick(String nick) {
-        this.nick = nick;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
-    public Integer getCodigo_sub() {
-        return codigo_sub;
+    public Subasta getSubasta() {
+        return subasta;
     }
 
-    public void setCodigo_sub(Integer codigo_sub) {
-        this.codigo_sub = codigo_sub;
+    public void setSubasta(Subasta subasta) {
+        this.subasta = subasta;
     }
 
+
+    
     
     @Override
     public int hashCode() {
@@ -95,7 +96,7 @@ public class SuscripcionSubasta implements Serializable{
         
     @Override
     public String toString() {
-        return "SUSCRIPCION_SUBASTA_05{" + "codigo=" + codigo + ", nick=" + nick + ", codigo_sub=" + codigo_sub + '}';
+        return "SUSCRIPCION_SUBASTA_05{" + "codigo=" + codigo + ", nick=" + usuario.getNick() + ", codigo_sub=" + subasta.getCodigo() + '}';
     }
 
     

@@ -6,12 +6,16 @@
 package ec.edu.espe.distribuidas.subjorel.servicio;
 import ec.edu.espe.distribuidas.subjorel.dao.JoyaDAO;
 import ec.edu.espe.distribuidas.subjorel.dao.SubastaDAO;
+import ec.edu.espe.distribuidas.subjorel.dao.SuscripcionSubastaDAO;
 import ec.edu.espe.distribuidas.subjorel.exception.ValidacionException;
 import ec.edu.espe.distribuidas.subjorel.modelo.Joya;
 import ec.edu.espe.distribuidas.subjorel.modelo.Subasta;
+import ec.edu.espe.distribuidas.subjorel.modelo.SuscripcionSubasta;
 import ec.edu.espe.distribuidas.subjorel.modelo.Usuario;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
@@ -19,6 +23,8 @@ import javax.ejb.TransactionAttributeType;
  *
  * @author Cristhy Alejandra
  */
+@Stateless
+@LocalBean 
 public class SubastaServicio {
     
     @EJB
@@ -26,6 +32,10 @@ public class SubastaServicio {
     
     @EJB
     private JoyaDAO joyaDAO;
+    
+    @EJB
+    private SuscripcionSubastaDAO suscripcionSubasta;
+            
      
      public List<Subasta>obtenerTodas(){
         return this.subastaDAO.findAll();
@@ -58,6 +68,18 @@ public class SubastaServicio {
         subasta.setJoya(joya);
         subastaDAO.insert(subasta);
       //  subastaDAO.insert(subasta);
+        
+    }
+    
+    /**
+     * Servicio para suscribirse a una subasta
+     */
+    public void suscribirseSubasta(Subasta subasta,Usuario usuario)
+    {
+        SuscripcionSubasta suscripcion=new SuscripcionSubasta();
+        suscripcion.setSubasta(subasta);
+        suscripcion.setUsuario(usuario);        
+        suscripcionSubasta.insert(suscripcion);
         
     }
 }

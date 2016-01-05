@@ -33,15 +33,6 @@ public class Subasta implements Serializable{
     @Column(name = "subasta_id", nullable = false)    
     private Integer codigo;
     
-    //@Column(name = "suscripcion_vendedor_id", nullable = false)    
-    //private Integer codigo_sus;
-    
-   // @Column(name = "joya_id", nullable = false)    
-   // private Integer codigo_joya;
-    
-    //@Column(name = "movimiento_id", nullable = false)    
-    //private Integer codigo_mov;
-    
     @Column(name = "precio_base", nullable = false)
     private BigDecimal precio;
     
@@ -66,8 +57,8 @@ public class Subasta implements Serializable{
     //@JoinColumn(name = "suscripcion_vendedor_id", referencedColumnName = "suscripcion_vendedor_id", insertable = false, updatable = false)
     //@ManyToOne(optional = false)
     @ManyToOne
-    @JoinColumn(name="suscripcion_vendedor_id")
-    private SuscripcionVendedor vendedor;
+    @JoinColumn(name="nick")
+    private Usuario vendedor;
     
     //@JoinColumn(name = "joya_id", referencedColumnName = "joya_id", insertable = false, updatable = false)
     //@ManyToOne(optional = false)
@@ -161,14 +152,16 @@ public class Subasta implements Serializable{
         this.tiempo = tiempo;
     }
 
-    public SuscripcionVendedor getVendedor() {
+    public Usuario getVendedor() {
         return vendedor;
     }
 
-    public void setVendedor(SuscripcionVendedor vendedor) {
+    public void setVendedor(Usuario vendedor) {
         this.vendedor = vendedor;
     }
 
+
+    
     public Joya getJoya() {
         return joya;
     }
@@ -211,7 +204,7 @@ public class Subasta implements Serializable{
 
     @Override
     public String toString() {
-        return "SUBASTA_05{" + "codigo=" + codigo + ", codigo_sus=" + joya.getNombre() + ", codigo_joya=" + movimiento.getNick() + ", codigo_mov=" + movimiento.getMonto() + ", precio=" + precio + ", monto=" + monto + ", fecha_ini=" + fecha_ini + ", fecha_fin=" + fecha_fin + ", categoria=" + categoria + ", tiempo=" + tiempo + '}';
+        return "SUBASTA_05{" + "codigo=" + codigo + ", codigo_sus=" + joya.getNombre() + ", codigo_joya= , codigo_mov=" + movimiento.getMonto() + ", precio=" + precio + ", monto=" + monto + ", fecha_ini=" + fecha_ini + ", fecha_fin=" + fecha_fin + ", categoria=" + categoria + ", tiempo=" + tiempo + '}';
     }
 
     

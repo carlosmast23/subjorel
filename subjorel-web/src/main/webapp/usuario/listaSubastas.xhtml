@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui"
+                template="../template/templateusuario.xhtml">
+
+    <ui:define name="contenido">
+        <h:form>
+            <p:growl id="growl" showDetail="true" sticky="true" /> 
+            <p:panel id="basic" header="Lista Subastas"  style="margin-bottom:20px;text-align: center">
+                <p:dataTable var="ejemplo" value="#{listaSubastaMB.subastas}" selectionMode="single" selection="#{listaSubastaMB.subasta}" rowKey="#{ejemplo.codigo}" >
+
+                    <p:column headerText="Codigo">
+                        <h:outputText value="#{ejemplo.codigo}"  />
+                    </p:column>
+
+                    <p:column headerText="Joya">
+                        <h:outputText value="#{ejemplo.joya.nombre}"  />
+                    </p:column>
+
+                    <p:column headerText="Usuario">
+                        <h:outputText value="#{ejemplo.vendedor.nick}"  />
+                    </p:column>
+
+                    <p:column headerText="Categoria">
+                        <h:outputText value="#{ejemplo.categoria}"  />
+                    </p:column>
+
+                    <p:column headerText="Fecha fin">
+                        <h:outputText value="#{ejemplo.fecha_fin}"  />
+                    </p:column>
+
+                </p:dataTable>
+            </p:panel>
+        </h:form> 
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui"
+                template="../template/templateusuario.xhtml">
+
+    <ui:define name="contenido">
+        <h:form id="form">
+            <p:growl id="growl" showDetail="true" sticky="true" /> 
+            
+            <p:panel id="basic" header="buscar subastas"  style="margin-bottom:20px;text-align: center">
+                <p:panelGrid columns="2" style=" margin: 0 auto;">
+                    <p:outputLabel for="Categoria" value="Categoria: " />
+                    <p:selectOneMenu id="Categoria" value="#{busquedaSubastaMB.codigoCategoriaJoya}" >
+                        <p:ajax listener="#{busquedaSubastaMB.cargarSubastas()}" update="datosTabla" />
+                        <f:selectItem itemLabel="Seleccione la categoria" itemValue="" />
+                        <f:selectItems var="joya" value="#{busquedaSubastaMB.lista}" itemValue="#{joya.codigo}" itemLabel="#{joya.nombre}"   />
+                    </p:selectOneMenu>
+                </p:panelGrid>
+                
+                <p:dataTable id="datosTabla" var="ejemplo" value="#{busquedaSubastaMB.listaSubastas}" selectionMode="single" selection="#{busquedaSubastaMB.subastaSeleccionada}" rowKey="#{ejemplo.codigo}" >
+                    
+                  
+
+                    <p:column headerText="Codigo">
+
+                        <h:outputText value="#{ejemplo.codigo}"  />
+                    </p:column>
+
+                    <p:column headerText="Joya">
+                        <h:outputText value="#{ejemplo.joya.nombre}"  />
+                    </p:column>
+
+                    <p:column headerText="Usuario">
+                        <h:outputText value="#{ejemplo.vendedor.nick}"  />
+                    </p:column>
+
+                    <p:column headerText="Precio Base">
+                        <h:outputText value="#{ejemplo.precio}"  />
+                    </p:column>
+
+                    <p:column headerText="Fecha fin">
+                        <h:outputText value="#{ejemplo.fecha_fin}"  />
+                    </p:column>
+
+                </p:dataTable>
+                <p:spacer height="10px"/>
+
+                <div style="margin: 0 auto;">
+                    <p:commandButton value="Suscribirse Subasta" actionListener="#{busquedaSubastaMB.suscribirse()}" />
+                </div>
+            </p:panel>
+        </h:form> 
+    </ui:define>
+</ui:composition>
