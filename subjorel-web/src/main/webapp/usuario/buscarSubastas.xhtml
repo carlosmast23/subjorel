@@ -11,6 +11,8 @@
             <p:growl id="growl" showDetail="true" sticky="true" /> 
             
             <p:panel id="basic" header="buscar subastas"  style="margin-bottom:20px;text-align: center">
+                
+                
                 <p:panelGrid columns="2" style=" margin: 0 auto;">
                     <p:outputLabel for="Categoria" value="Categoria: " />
                     <p:selectOneMenu id="Categoria" value="#{busquedaSubastaMB.codigoCategoriaJoya}" >
@@ -52,6 +54,7 @@
                     <p:commandButton value="Suscribirse Subasta" actionListener="#{busquedaSubastaMB.suscribirse()}" />
                 </div>
             </p:panel>
+            <p:outputLabel value="Seleccione una categoria para buscar las subastas" style="text-align: left"/>
         </h:form> 
     </ui:define>
 </ui:composition>

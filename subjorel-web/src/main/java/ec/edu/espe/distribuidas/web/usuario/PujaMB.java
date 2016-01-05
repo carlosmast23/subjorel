@@ -24,7 +24,10 @@ import javax.faces.bean.RequestScoped;
 public class PujaMB implements Serializable
 {
     private List<SuscripcionSubasta> subastas;
-    private SuscripcionSubasta subasta;
+    private SuscripcionSubasta suscripcionSubasta;
+    
+    private Integer codigoSuscripcionSubasta;
+       
     
     @EJB
     private SubastaServicio subastaServicio;
@@ -33,8 +36,17 @@ public class PujaMB implements Serializable
     public void postConstruct()
     {
         subastas=subastaServicio.pujasSuscritas();
-        ///System.out.println(subasta.);
+        //System.out.println(codigoSuscripcionSubasta);
+        //suscripcionSubasta=subastaServicio.suscripcionObtenerPorId(codigoSuscripcionSubasta);
+
     }
+    
+    
+    public void metodo()
+    {
+    }
+        
+        
     
     public void puja()
     {
@@ -49,13 +61,6 @@ public class PujaMB implements Serializable
         this.subastas = subastas;
     }
 
-    public SuscripcionSubasta getSubasta() {
-        return subasta;
-    }
-
-    public void setSubasta(SuscripcionSubasta subasta) {
-        this.subasta = subasta;
-    }
 
     public SubastaServicio getSubastaServicio() {
         return subastaServicio;
@@ -64,7 +69,32 @@ public class PujaMB implements Serializable
     public void setSubastaServicio(SubastaServicio subastaServicio) {
         this.subastaServicio = subastaServicio;
     }
+    
+    public void activar(String msg)
+    {
+        System.out.println(msg);
+    }
 
+    public SuscripcionSubasta getSuscripcionSubasta() {
+        return suscripcionSubasta;
+    }
+
+    public void setSuscripcionSubasta(SuscripcionSubasta suscripcionSubasta) {
+        this.suscripcionSubasta = suscripcionSubasta;
+    }
+
+    public Integer getCodigoSuscripcionSubasta() {
+        return codigoSuscripcionSubasta;
+    }
+
+    public void setCodigoSuscripcionSubasta(Integer codigoSuscripcionSubasta) {
+        this.codigoSuscripcionSubasta = codigoSuscripcionSubasta;
+        suscripcionSubasta=subastaServicio.suscripcionObtenerPorId(codigoSuscripcionSubasta);
+    }
+
+    
+    
+    
     
     
 }

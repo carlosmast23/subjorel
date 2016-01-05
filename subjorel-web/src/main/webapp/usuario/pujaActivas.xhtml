@@ -10,7 +10,7 @@
         <h:form>
             <p:growl id="growl" showDetail="true" sticky="true" /> 
             <p:panel id="basic" header="Lista Pujas Suscrito"  style="margin-bottom:20px;text-align: center">
-                <p:dataTable var="ejemplo" value="#{pujaMB.subastas}" selectionMode="single" selection="#{pujaMB.subasta}" rowKey="#{ejemplo.codigo}" >
+                <p:dataTable var="ejemplo" value="#{pujaActivaMB.subastas}" selectionMode="single" selection="#{pujaActivaMB.subasta}" rowKey="#{ejemplo.codigo}" >
 
                     <p:column headerText="Codigo">
                         <h:outputText value="#{ejemplo.subasta.codigo}"  />
@@ -24,21 +24,21 @@
                         <h:outputText value="#{ejemplo.subasta.vendedor.nick}"  />
                     </p:column>
 
-                    <p:column headerText="Categoria">
-                        <h:outputText value="#{ejemplo.subasta.categoria}"  />
-                    </p:column>
-
                     <p:column headerText="Fecha fin">
                         <h:outputText value="#{ejemplo.subasta.fecha_fin}"  />
+                    </p:column>
+
+                    <p:column headerText="Pujar">
+                        <p:link outcome="nuevaPuja" value="Pujar">
+                            <f:param name="datosPuja" value="#{ejemplo.subasta.codigo}" />
+                        </p:link>
                     </p:column>
 
                 </p:dataTable>
 
                 <p:spacer height="10px"/>
 
-                <div style="margin: 0 auto;">
-                    <p:commandButton value="Puja" actionListener="#{pujaMB.grabar()}" ajax="false" />
-                </div>
+
             </p:panel>
         </h:form> 
     </ui:define>

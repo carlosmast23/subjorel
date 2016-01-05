@@ -8,6 +8,7 @@
     <h:head>
         <title>SubJorel</title>
         <h:outputStylesheet library="css" name="hojaestilo.css"/>
+        <h:outputScript name="ejemplo.js" library="js" target="form"/>
     </h:head>
     <h:body>
 
@@ -37,13 +38,13 @@
                      
                         </p:submenu>
                         <p:submenu label="Compras">
-                            <p:menuitem value="Pujas Activas" url="http://www.primefaces.org" icon="ui-icon-home"/>
-                            <p:menuitem value="Buscar subastas"  icon="ui-icon-star"/>
+                            <p:menuitem value="Pujas Activas" action="pujaActivas" icon="ui-icon-home"/>
+                            <p:menuitem value="Buscar subastas" action="buscarSubastas"  icon="ui-icon-star"/>
                         
                         </p:submenu>
                         <p:submenu label="Facturas">
-                            <p:menuitem value="Compras" url="http://www.primefaces.org" icon="ui-icon-home"/>
-                            <p:menuitem value="Subastas"  icon="ui-icon-star"/>
+                            <p:menuitem value="Compras" action="reporteSubastas" icon="ui-icon-home"/>
+                            <p:menuitem value="Subastas" action="reporteSubastas"  icon="ui-icon-star"/>
                             <p:menuitem value="todos"  icon="ui-icon-star"/>
                         </p:submenu>
                     </p:menu>                

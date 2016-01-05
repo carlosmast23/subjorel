@@ -91,4 +91,10 @@ public class SubastaServicio {
     {
         return suscripcionSubastaDAO.findAll();
     }
+    
+    public SuscripcionSubasta suscripcionObtenerPorId(Integer codigoSubasta)
+    {
+        return this.suscripcionSubastaDAO.findById(codigoSubasta,false);
+        
+    }
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui"
+                template="../template/templateusuario.xhtml">
+
+
+    <ui:define name="contenido">
+        <h:form id="form">
+            <f:metadata>            
+                <f:viewParam name="datosPuja" value="#{pujaMB.codigoSuscripcionSubasta}"/>            
+            </f:metadata>
+            <p:growl id="growl" showDetail="true" sticky="true" /> 
+            <p:panel id="basic" header="Nuva Puja"  style="margin-bottom:20px;text-align: center">
+                <img src="#{facesContext.externalContext.requestContextPath}/resources/img/martillo.jpg" align="top"/>
+                <p:panelGrid columns="2" style=" margin: 0 auto;text-align: left" >
+                    <p:outputLabel value="Codigo"/>
+                    <p:outputLabel value="#{pujaMB.suscripcionSubasta.codigo}"/>
+                    <p:outputLabel  value="Artiulo:"/>
+                    <p:outputLabel  value="#{pujaMB.suscripcionSubasta.subasta.joya.nombre}"   />
+                    <p:outputLabel  value="Precio Base:"/>
+                    <p:outputLabel  value="#{pujaMB.suscripcionSubasta.subasta.precio}$"   />
+                    <p:outputLabel  value="Fecha Limite:"/>
+                    <p:outputLabel  value="#{pujaMB.suscripcionSubasta.subasta.fecha_fin}"  >
+                        <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                    </p:outputLabel>    
+                </p:panelGrid>
+                <p:spacer height="10px"/>
+
+                <div id="reloj" style="font-size: 50px" />
+
+                <div style="margin: 0 auto;">
+                    <p:commandButton value="P U J A R" onclick="alert('¿Estas seguro?');"    ajax="false" />
+
+                </div>
+
+                <input id="horaSistema" type="hidden"  value="#{pujaMB.suscripcionSubasta.getSubasta().getFecha_fin().getTime()}"/>
+
+
+            </p:panel>
+        </h:form> 
+
+    </ui:define>
+</ui:composition>

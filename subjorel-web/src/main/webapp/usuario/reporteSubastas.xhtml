@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui"
+                template="../template/templateusuario.xhtml">
+
+    <ui:define name="contenido">
+        <h:form>
+            <p:growl id="growl" showDetail="true" sticky="true" /> 
+            <p:panel id="basic" header="Reporte Subastas"  style="margin-bottom:20px;text-align: center" >
+                <p:panel visible="false">
+                    <p:dataTable id="tbl" var="ejemplo" value="#{listaSubastaMB.subastas}" selectionMode="single" selection="#{listaSubastaMB.subasta}" rowKey="#{ejemplo.codigo}"  >
+
+                        <p:column headerText="Codigo">
+                            <h:outputText value="#{ejemplo.codigo}"  />
+                        </p:column>
+
+                        <p:column headerText="Joya">
+                            <h:outputText value="#{ejemplo.joya.nombre}"  />
+                        </p:column>
+
+                        <p:column headerText="Usuario">
+                            <h:outputText value="#{ejemplo.vendedor.nick}"  />
+                        </p:column>
+
+                        <p:column headerText="Categoria">
+                            <h:outputText value="#{ejemplo.categoria}"  />
+                        </p:column>
+
+                        <p:column headerText="Fecha fin">
+                            <h:outputText value="#{ejemplo.fecha_fin}"  />
+                        </p:column>
+
+                    </p:dataTable>
+
+                </p:panel>
+                <p:panelGrid columns="2" style=" margin: 0 auto;text-align: left" >
+                    <h:commandLink>
+                        <p:graphicImage name="excel.png" library="img" />
+                        <p:dataExporter type="xls" target="tbl" fileName="cars" pageOnly="true"/>
+                    </h:commandLink>
+                    <p:outputLabel value="Descarga el documento en excel" />
+                    <h:commandLink>
+                        <p:graphicImage name="pdf-icon.png" library="img" />
+                        <p:dataExporter type="pdf" target="tbl" fileName="cars" pageOnly="true" />
+                    </h:commandLink>
+                    <p:outputLabel value="Descarga el documento en PDF" />
+                </p:panelGrid>
+            </p:panel>
+        </h:form> 
+    </ui:define>
+</ui:composition>
