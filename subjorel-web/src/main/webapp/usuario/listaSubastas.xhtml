@@ -10,7 +10,7 @@
         <h:form>
             <p:growl id="growl" showDetail="true" sticky="true" /> 
             <p:panel id="basic" header="Lista Subastas"  style="margin-bottom:20px;text-align: center">
-                <p:dataTable var="ejemplo" value="#{listaSubastaMB.subastas}" selectionMode="single" selection="#{listaSubastaMB.subasta}" rowKey="#{ejemplo.codigo}" >
+                <p:dataTable id="tbl" var="ejemplo" value="#{listaSubastaMB.subastas}" selectionMode="single" selection="#{listaSubastaMB.subasta}" rowKey="#{ejemplo.codigo}" >
 
                     <p:column headerText="Codigo">
                         <h:outputText value="#{ejemplo.codigo}"  />
@@ -33,6 +33,11 @@
                     </p:column>
 
                 </p:dataTable>
+                
+                <h:commandLink>
+                    <p:graphicImage name="/demo/images/excel.png" />
+                    <p:dataExporter type="xls" target="tbl" fileName="cars" pageOnly="true"/>
+                </h:commandLink>
             </p:panel>
         </h:form> 
     </ui:define>

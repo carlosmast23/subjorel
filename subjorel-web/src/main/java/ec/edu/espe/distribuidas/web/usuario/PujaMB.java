@@ -27,12 +27,13 @@ public class PujaMB implements Serializable
     private SuscripcionSubasta subasta;
     
     @EJB
-    private SuscripcionSubasta subastaServicio;
+    private SubastaServicio subastaServicio;
     
     @PostConstruct
     public void postConstruct()
     {
-        subastas=subastaServicio.obtenerTodas();
+        subastas=subastaServicio.pujasSuscritas();
+        ///System.out.println(subasta.);
     }
     
     public void puja()
@@ -40,20 +41,30 @@ public class PujaMB implements Serializable
         
     }
 
-    public List<Subasta> getSubastas() {
+    public List<SuscripcionSubasta> getSubastas() {
         return subastas;
     }
 
-    public void setSubastas(List<Subasta> subastas) {
+    public void setSubastas(List<SuscripcionSubasta> subastas) {
         this.subastas = subastas;
     }
 
-    public Subasta getSubasta() {
+    public SuscripcionSubasta getSubasta() {
         return subasta;
     }
 
-    public void setSubasta(Subasta subasta) {
+    public void setSubasta(SuscripcionSubasta subasta) {
         this.subasta = subasta;
     }
+
+    public SubastaServicio getSubastaServicio() {
+        return subastaServicio;
+    }
+
+    public void setSubastaServicio(SubastaServicio subastaServicio) {
+        this.subastaServicio = subastaServicio;
+    }
+
+    
     
 }

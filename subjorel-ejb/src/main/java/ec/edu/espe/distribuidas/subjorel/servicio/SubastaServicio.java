@@ -28,6 +28,9 @@ import javax.ejb.TransactionAttributeType;
 public class SubastaServicio {
     
     @EJB
+    private SuscripcionSubastaDAO suscripcionSubastaDAO;
+    
+    @EJB
     private SubastaDAO subastaDAO;
     
     @EJB
@@ -81,5 +84,11 @@ public class SubastaServicio {
         suscripcion.setUsuario(usuario);        
         suscripcionSubasta.insert(suscripcion);
         
+    }
+    
+    
+    public List<SuscripcionSubasta> pujasSuscritas()
+    {
+        return suscripcionSubastaDAO.findAll();
     }
 }

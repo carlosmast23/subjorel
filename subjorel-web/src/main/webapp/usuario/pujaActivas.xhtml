@@ -13,23 +13,23 @@
                 <p:dataTable var="ejemplo" value="#{pujaMB.subastas}" selectionMode="single" selection="#{pujaMB.subasta}" rowKey="#{ejemplo.codigo}" >
 
                     <p:column headerText="Codigo">
-                        <h:outputText value="#{ejemplo.codigo}"  />
+                        <h:outputText value="#{ejemplo.subasta.codigo}"  />
                     </p:column>
 
                     <p:column headerText="Joya">
-                        <h:outputText value="#{ejemplo.joya.nombre}"  />
+                        <h:outputText value="#{ejemplo.subasta.joya.nombre}"  />
                     </p:column>
 
                     <p:column headerText="Usuario">
-                        <h:outputText value="#{ejemplo.vendedor.nick}"  />
+                        <h:outputText value="#{ejemplo.subasta.vendedor.nick}"  />
                     </p:column>
 
                     <p:column headerText="Categoria">
-                        <h:outputText value="#{ejemplo.categoria}"  />
+                        <h:outputText value="#{ejemplo.subasta.categoria}"  />
                     </p:column>
 
                     <p:column headerText="Fecha fin">
-                        <h:outputText value="#{ejemplo.fecha_fin}"  />
+                        <h:outputText value="#{ejemplo.subasta.fecha_fin}"  />
                     </p:column>
 
                 </p:dataTable>
