@@ -54,6 +54,13 @@ public class Subasta implements Serializable{
     @Temporal(javax.persistence.TemporalType.TIME)
     private Date tiempo;
     
+    @Column(name = "incremento", nullable = false)
+    private BigDecimal incremento;
+    
+    @Column(name = "incremento_actual", nullable = false)
+    private BigDecimal incrementoActual;
+    
+    
     //@JoinColumn(name = "suscripcion_vendedor_id", referencedColumnName = "suscripcion_vendedor_id", insertable = false, updatable = false)
     //@ManyToOne(optional = false)
     @ManyToOne
@@ -177,6 +184,24 @@ public class Subasta implements Serializable{
     public void setMovimiento(Movimiento movimiento) {
         this.movimiento = movimiento;
     }
+
+    public BigDecimal getIncremento() {
+        return incremento;
+    }
+
+    public void setIncremento(BigDecimal incremento) {
+        this.incremento = incremento;
+    }
+
+    public BigDecimal getIncrementoActual() {
+        return incrementoActual;
+    }
+
+    public void setIncrementoActual(BigDecimal incrementoActual) {
+        this.incrementoActual = incrementoActual;
+    }
+    
+    
     
     
 

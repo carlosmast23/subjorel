@@ -15,7 +15,7 @@ import javax.ejb.Stateless;
  * @author Cristhy Alejandra
  */
 
-@LocalBean 
+//@LocalBean 
 @Stateless 
 public class PujaDAO extends DefaultGenericDAOImple<Puja,Integer>{
     public PujaDAO()

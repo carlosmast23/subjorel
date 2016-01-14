@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui"
+                template="../template/templateusuario.xhtml">
+
+
+    <ui:define name="contenido">
+        <h:form id="form">
+            <f:metadata>            
+                <f:viewParam name="datosPuja" value="#{pujaMB.codigoSuscripcionSubasta}"/>            
+            </f:metadata>
+            <p:growl id="growl" showDetail="true" sticky="true" /> 
+            <p:panel id="basic" header="Informe Puja"  style="margin-bottom:20px;text-align: center">
+
+                <input id="horaSistema" type="hidden"  value="#{pujaMB.suscripcionSubasta.getSubasta().getFecha_fin().getTime()}"/>
+
+
+            </p:panel>
+        </h:form> 
+
+    </ui:define>
+</ui:composition>

@@ -7,7 +7,10 @@ package ec.edu.espe.distribuidas.web.usuario;
 
 import ec.edu.espe.distribuidas.subjorel.modelo.Subasta;
 import ec.edu.espe.distribuidas.subjorel.modelo.SuscripcionSubasta;
+import ec.edu.espe.distribuidas.subjorel.modelo.Usuario;
+import ec.edu.espe.distribuidas.subjorel.servicio.PujaServicio;
 import ec.edu.espe.distribuidas.subjorel.servicio.SubastaServicio;
+import ec.edu.espe.distribuidas.subjorel.servicio.UsuarioServicio;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -27,10 +30,15 @@ public class PujaMB implements Serializable
     private SuscripcionSubasta suscripcionSubasta;
     
     private Integer codigoSuscripcionSubasta;
-       
+    
+    @EJB
+    private UsuarioServicio usuarioServicio;
     
     @EJB
     private SubastaServicio subastaServicio;
+    
+    @EJB
+    private PujaServicio pujaServicio;
     
     @PostConstruct
     public void postConstruct()
@@ -50,6 +58,8 @@ public class PujaMB implements Serializable
     
     public void puja()
     {
+        Usuario usuario=usuarioServicio.obtenerPorId("carlos");        
+        pujaServicio.nuevaPuja(100, suscripcionSubasta,usuario);
         
     }
 

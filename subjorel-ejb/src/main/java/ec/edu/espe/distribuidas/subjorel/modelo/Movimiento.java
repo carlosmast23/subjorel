@@ -33,8 +33,8 @@ public class Movimiento implements Serializable{
     @Column(name = "movimiento_id", nullable = false)    
     private Integer codigo;
     
-    @Column(name = "nick", nullable = false)
-    private String nick;
+    //@Column(name = "nick", nullable = false)
+    //private String nick;
         
     @Column(name = "monto", nullable = false)
     private BigDecimal monto;
@@ -46,8 +46,8 @@ public class Movimiento implements Serializable{
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha_movimiento;
 
-    @JoinColumn(name = "nick", referencedColumnName = "nick", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne
+    @JoinColumn(name="nick")
     private Usuario usuario;
     
     public Integer getCodigo() {
@@ -58,13 +58,13 @@ public class Movimiento implements Serializable{
         this.codigo = codigo;
     }
 
-    public String getNick() {
-        return nick;
-    }
+   // public String getNick() {
+   //     return nick;
+   // }
 
-    public void setNick(String nick) {
-        this.nick = nick;
-    }
+  //  public void setNick(String nick) {
+  //      this.nick = nick;
+  //  }
 
     public BigDecimal getMonto() {
         return monto;
@@ -90,6 +90,16 @@ public class Movimiento implements Serializable{
         this.fecha_movimiento = fecha_movimiento;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -114,7 +124,7 @@ public class Movimiento implements Serializable{
 
     @Override
     public String toString() {
-        return "MOVIMIENTO_05{" + "codigo=" + codigo + ", nick=" + nick + ", monto=" + monto + ", saldo=" + saldo + ", fecha_movimiento=" + fecha_movimiento + '}';
+        return "MOVIMIENTO_05{" + "codigo=" + codigo + ", nick=" + usuario.getNick() + ", monto=" + monto + ", saldo=" + saldo + ", fecha_movimiento=" + fecha_movimiento + '}';
     }
 
     

@@ -34,11 +34,11 @@ public class Puja implements Serializable{
     @Column(name = "puja_id", nullable = false)    
     private Integer codigo;
     
-    @Column(name = "movimiento_id", nullable = false)    
-    private Integer codigo_mov; 
+    //@Column(name = "movimiento_id", nullable = false)    
+    //private Integer codigo_mov; 
     
-    @Column(name = "suscripcion_id", nullable = false)    
-    private Integer codigo_sus;    
+    //@Column(name = "suscripcion_id", nullable = false)    
+    //private Integer codigo_sus;    
     
     @Column(name = "monto", nullable = false)
     private BigDecimal monto;
@@ -50,12 +50,12 @@ public class Puja implements Serializable{
     @Column(name = "orden_puja", nullable = false)    
     private Integer orden_puja;
     
-    @JoinColumn(name = "movimiento_id", referencedColumnName = "movimiento_id", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne
+    @JoinColumn(name="movimiento_id")
     private Movimiento movimiento;
     
-    @JoinColumn(name = "suscripcion_id", referencedColumnName = "suscripcion_id", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne
+    @JoinColumn(name="suscripcion_id")
     private SuscripcionSubasta subasta;
 
     public Integer getCodigo() {
@@ -66,21 +66,7 @@ public class Puja implements Serializable{
         this.codigo = codigo;
     }
 
-    public Integer getCodigo_mov() {
-        return codigo_mov;
-    }
 
-    public void setCodigo_mov(Integer codigo_mov) {
-        this.codigo_mov = codigo_mov;
-    }
-
-    public Integer getCodigo_sus() {
-        return codigo_sus;
-    }
-
-    public void setCodigo_sus(Integer codigo_sus) {
-        this.codigo_sus = codigo_sus;
-    }
 
     public BigDecimal getMonto() {
         return monto;
@@ -105,6 +91,24 @@ public class Puja implements Serializable{
     public void setOrden_puja(Integer orden_puja) {
         this.orden_puja = orden_puja;
     }
+
+    public Movimiento getMovimiento() {
+        return movimiento;
+    }
+
+    public void setMovimiento(Movimiento movimiento) {
+        this.movimiento = movimiento;
+    }
+
+    public SuscripcionSubasta getSubasta() {
+        return subasta;
+    }
+
+    public void setSubasta(SuscripcionSubasta subasta) {
+        this.subasta = subasta;
+    }
+    
+    
     
     @Override
     public int hashCode() {
@@ -130,7 +134,7 @@ public class Puja implements Serializable{
 
     @Override
     public String toString() {
-        return "PUJA_05{" + "codigo=" + codigo + ", codigo_mov=" + codigo_mov + ", codigo_sus=" + codigo_sus + ", monto=" + monto + ", fecha=" + fecha + ", orden_puja=" + orden_puja + '}';
+        return "PUJA_05{" + "codigo=" + codigo + ", codigo_mov=" + movimiento.getCodigo() + ", codigo_sus=" + subasta.getCodigo() + ", monto=" + monto + ", fecha=" + fecha + ", orden_puja=" + orden_puja + '}';
     }
 
     

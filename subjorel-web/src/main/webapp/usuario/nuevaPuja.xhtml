@@ -32,10 +32,10 @@
                 <div id="reloj" style="font-size: 50px" />
 
                 <div style="margin: 0 auto;">
-                    <p:commandButton value="P U J A R" onclick="alert('¿Estas seguro?');"    ajax="false" />
+                    <p:commandButton value="P U J A R" actionListener="#{pujaMB.puja()}" onclick="alert('¿Estas seguro?');"    ajax="false" />
 
                 </div>
-
+                
                 <input id="horaSistema" type="hidden"  value="#{pujaMB.suscripcionSubasta.getSubasta().getFecha_fin().getTime()}"/>
 
 

@@ -32,6 +32,13 @@
                                 <p:slider for="precio" />
                             </p:panelGrid>
                             
+
+                            <p:outputLabel for="incremento" value="Incremento:"/>
+                            <p:panelGrid columns="1">
+                                <p:inputText id="incremento" value="#{nuevaSubastaMB.subasta.incremento}" />
+                                <p:slider for="incremento" />
+                            </p:panelGrid>
+                            
                             <p:outputLabel for="categoriaPuja" value="Categoria:"/>
                             <p:selectOneMenu id="categoriaPuja" value="#{nuevaSubastaMB.subasta.categoria}" style="width:100%">
                                 <f:selectItem itemLabel="Seleccione la categoria" itemValue="" />

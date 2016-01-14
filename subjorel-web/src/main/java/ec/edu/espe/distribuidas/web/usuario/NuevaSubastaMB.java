@@ -68,6 +68,8 @@ public class NuevaSubastaMB implements Serializable{
         Usuario usuario=usuarioServicio.obtenerPorId("carlos");
         joya.setCategoria(categoria);        
         subasta.setVendedor(usuario);
+        subasta.setIncrementoActual(subasta.getIncremento());
+        subasta.setMonto(subasta.getPrecio());
         System.out.println(joya);
         subastaServicio.nuevaSubasta(subasta, joya);
     }
