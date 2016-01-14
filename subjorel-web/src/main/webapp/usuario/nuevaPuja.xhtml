@@ -22,6 +22,10 @@
                     <p:outputLabel  value="#{pujaMB.suscripcionSubasta.subasta.joya.nombre}"   />
                     <p:outputLabel  value="Precio Base:"/>
                     <p:outputLabel  value="#{pujaMB.suscripcionSubasta.subasta.precio}$"   />
+                    <p:outputLabel  value="Precio Actual:"/>
+                    <p:outputLabel  value="#{pujaMB.suscripcionSubasta.subasta.monto}$"   />
+                    <p:outputLabel  value="Incremento:"/>
+                    <p:outputLabel  value="#{pujaMB.suscripcionSubasta.subasta.incremento}$"   />
                     <p:outputLabel  value="Fecha Limite:"/>
                     <p:outputLabel  value="#{pujaMB.suscripcionSubasta.subasta.fecha_fin}"  >
                         <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
@@ -35,9 +39,34 @@
                     <p:commandButton value="P U J A R" actionListener="#{pujaMB.puja()}" onclick="alert('¿Estas seguro?');"    ajax="false" />
 
                 </div>
-                
-                <input id="horaSistema" type="hidden"  value="#{pujaMB.suscripcionSubasta.getSubasta().getFecha_fin().getTime()}"/>
 
+                <input id="horaSistema" type="hidden"  value="#{pujaMB.suscripcionSubasta.getSubasta().getFecha_fin().getTime()}"/>
+               
+                <p:spacer height="10px"/>
+                <p:panel id="basic2" header="Historial de Pujas"  style="margin-bottom:20px;text-align: center">                
+                    <p:dataTable var="puja" value="#{pujaMB.pujasSubastas}"  >
+
+                        <p:column headerText="Codigo">
+                            <h:outputText value="#{puja.codigo}"  />
+                        </p:column>
+
+                        <p:column headerText="Usuario">
+                            <h:outputText value="#{puja.movimiento.usuario.nick}"  />
+                        </p:column>
+
+                        <p:column headerText="Monto">
+                            <h:outputText value="#{puja.monto}"  />
+                        </p:column>
+
+                        <p:column headerText="Fecha">
+                            <h:outputText value="#{puja.fecha}"  >
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+
+
+                    </p:dataTable>
+                </p:panel>
 
             </p:panel>
         </h:form> 

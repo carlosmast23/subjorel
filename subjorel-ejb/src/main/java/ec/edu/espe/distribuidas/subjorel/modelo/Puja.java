@@ -44,7 +44,7 @@ public class Puja implements Serializable{
     private BigDecimal monto;
     
     @Column(name = "fecha", nullable = false)
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date fecha;
     
     @Column(name = "orden_puja", nullable = false)    

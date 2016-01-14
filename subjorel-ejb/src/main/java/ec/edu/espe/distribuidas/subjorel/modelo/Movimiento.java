@@ -18,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 /**
  *
@@ -43,7 +44,7 @@ public class Movimiento implements Serializable{
     private BigDecimal saldo;
     
     @Column(name = "fecha_movimiento", nullable = false)
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date fecha_movimiento;
 
     @ManyToOne
