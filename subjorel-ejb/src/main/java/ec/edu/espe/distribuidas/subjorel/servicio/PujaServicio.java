@@ -94,7 +94,7 @@ public class PujaServicio {
      */
     
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
-    public void nuevaPuja(SuscripcionSubasta suscribcion)
+    public void nuevaPuja(SuscripcionSubasta suscribcion,Usuario usuario)
     {
         Date date=new Date();
         DateFormat format = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
@@ -105,7 +105,7 @@ public class PujaServicio {
                 
         subasta.setMonto(new BigDecimal(valor));
         //subasta.setIncrementoActual(new BigDecimal(subasta.getIncrementoActual().floatValue()+subasta.getIncremento().floatValue()));
-        Usuario usuario=suscribcion.getUsuario();
+       // Usuario usuario=suscribcion.getUsuario();
         float saldoActualCuenta=usuario.getCredito().floatValue()-valorSubasta;
         usuario.setCredito(new BigDecimal(saldoActualCuenta));
         usuarioDAO.update(usuario);

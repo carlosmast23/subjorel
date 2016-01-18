@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui"
+                template="../template/templateusuario.xhtml">
+
+    <ui:define name="contenido">
+        <h:form>
+            <p:growl id="growl" showDetail="true" sticky="true" /> 
+            <p:panel id="basic" header="Inicio"  style="margin-bottom:20px;text-align: center">
+                <div style="text-align: center">
+                    <img width="80%" height="80%" src="#{facesContext.externalContext.requestContextPath}/resources/img/bienvenido.png" align="top"/>
+                </div>
+                <h:panelGrid columns="2" cellpadding="10">
+                    <h:outputText value="Hola #{login.usuarioLogueado.nick} bienvenido a SubJorel ..." />
+                </h:panelGrid>
+            </p:panel>
+        </h:form> 
+    </ui:define>
+</ui:composition>

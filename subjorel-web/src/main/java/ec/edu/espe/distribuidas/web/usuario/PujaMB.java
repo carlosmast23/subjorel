@@ -12,12 +12,14 @@ import ec.edu.espe.distribuidas.subjorel.modelo.Usuario;
 import ec.edu.espe.distribuidas.subjorel.servicio.PujaServicio;
 import ec.edu.espe.distribuidas.subjorel.servicio.SubastaServicio;
 import ec.edu.espe.distribuidas.subjorel.servicio.UsuarioServicio;
+import ec.edu.espe.distribuidas.web.Login;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
 /**
@@ -46,6 +48,9 @@ public class PujaMB implements Serializable
     @EJB
     private PujaServicio pujaServicio;
     
+    @ManagedProperty(value = "#{login}")
+    private Login login;
+    
     @PostConstruct
     public void postConstruct()
     {
@@ -67,8 +72,10 @@ public class PujaMB implements Serializable
     
     public void puja()
     {
-        Usuario usuario=usuarioServicio.obtenerPorId("carlos");        
-        pujaServicio.nuevaPuja(suscripcionSubasta);
+        Usuario usuario=login.getUsuarioLogueado();  
+        //suscripcionSubasta.setUsuario(usuario);
+        pujaServicio.nuevaPuja(suscripcionSubasta,usuario);
+        //return "puja";
         
     }
 
@@ -122,6 +129,14 @@ public class PujaMB implements Serializable
     public void setPujasSubastas(List<Puja> pujasSubastas) 
     {
         this.pujasSubastas = pujasSubastas;
+    }
+
+    public Login getLogin() {
+        return login;
+    }
+
+    public void setLogin(Login login) {
+        this.login = login;
     }
 
     

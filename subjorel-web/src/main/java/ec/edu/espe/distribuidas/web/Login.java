@@ -5,24 +5,30 @@
  */
 package ec.edu.espe.distribuidas.web;
 
+import ec.edu.espe.distribuidas.subjorel.modelo.Usuario;
 import ec.edu.espe.distribuidas.subjorel.servicio.UsuarioServicio;
 import java.io.Serializable;
+import javax.ejb.ConcurrencyManagement;
+import javax.ejb.ConcurrencyManagementType;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 /**
  *
  * @author Carlos
  */
-@ManagedBean
-@RequestScoped
+@ManagedBean(name = "login")
+//@ConcurrencyManagement(ConcurrencyManagementType.CONTAINER)
+@SessionScoped
 public class Login implements Serializable
 {
     private String nick;
     private String clave;
+    
+    private Usuario usuarioLogueado;
     
     @EJB
     private UsuarioServicio servicio;
@@ -31,9 +37,10 @@ public class Login implements Serializable
     {
         FacesContext context = FacesContext.getCurrentInstance();
         if(servicio.login(nick, clave))
-        {            
+        { 
+            usuarioLogueado=servicio.obtenerPorId(nick);
             context.addMessage(null, new FacesMessage("Bienvenido al Sistema Subjorel","!Buen dia!"));
-            return "indexadmin";
+            return "indexusuario";
         }
         context.addMessage(null, new FacesMessage("El usuario o clave son incorrectos","!Vuelva a intentar!"));
         return "login";
@@ -53,6 +60,22 @@ public class Login implements Serializable
 
     public void setClave(String clave) {
         this.clave = clave;
+    }
+
+    public Usuario getUsuarioLogueado() {
+        return usuarioLogueado;
+    }
+
+    public void setUsuarioLogueado(Usuario usuarioLogueado) {
+        this.usuarioLogueado = usuarioLogueado;
+    }
+
+    public UsuarioServicio getServicio() {
+        return servicio;
+    }
+
+    public void setServicio(UsuarioServicio servicio) {
+        this.servicio = servicio;
     }
     
     

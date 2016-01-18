@@ -57,7 +57,7 @@
                 <p:spacer height="10px"/>
 
                 <div style="margin: 0 auto;">
-                    <p:commandButton value="Crear" actionListener="#{nuevaSubastaMB.grabar()}" ajax="false" />
+                    <p:commandButton value="Crear" actionListener="#{nuevaSubastaMB.grabar(login.usuarioLogueado)}" ajax="false" />
                 </div>
 
             </p:panel>

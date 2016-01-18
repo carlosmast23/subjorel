@@ -12,6 +12,7 @@ import ec.edu.espe.distribuidas.subjorel.modelo.Joya;
 import ec.edu.espe.distribuidas.subjorel.modelo.Subasta;
 import ec.edu.espe.distribuidas.subjorel.modelo.SuscripcionSubasta;
 import ec.edu.espe.distribuidas.subjorel.modelo.Usuario;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
@@ -40,9 +41,23 @@ public class SubastaServicio {
     private SuscripcionSubastaDAO suscripcionSubasta;
             
      
-     public List<Subasta>obtenerTodas(){
+    public List<Subasta>obtenerTodas(){
         return this.subastaDAO.findAll();
     }
+     
+    public List<Subasta>obtenerPorUsuario(Usuario usuario)
+    {
+        List<Subasta> lista= this.subastaDAO.findAll();
+        List<Subasta> resultado=new ArrayList<Subasta>();
+        for (Subasta subasta : lista) 
+        {
+            if(subasta.getVendedor().equals(usuario))
+            {
+                resultado.add(subasta);
+            }
+        }
+        return resultado;
+    } 
     
     public Subasta obtenerPorId(Integer codigoSubasta){
         return this.subastaDAO.findById(codigoSubasta,false);

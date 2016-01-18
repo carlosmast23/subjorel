@@ -18,8 +18,10 @@ import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -62,16 +64,18 @@ public class NuevaSubastaMB implements Serializable{
                 
     }
     
-    public void grabar()
+    public void grabar(Usuario usuario)
     {   
         CategoriaJoya categoria=categoriaServicio.obtenerPorId(codigoCategoriaJoya);
-        Usuario usuario=usuarioServicio.obtenerPorId("carlos");
+        //Usuario usuario=usuarioServicio.obtenerPorId("carlos");
         joya.setCategoria(categoria);        
         subasta.setVendedor(usuario);
         subasta.setIncrementoActual(subasta.getIncremento());
         subasta.setMonto(subasta.getPrecio());
         System.out.println(joya);
         subastaServicio.nuevaSubasta(subasta, joya);
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("La subasta fue creada exitosamente","!OK!"));
     }
 
     public List<CategoriaJoya> getLista() {

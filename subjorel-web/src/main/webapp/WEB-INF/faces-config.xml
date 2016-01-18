@@ -22,7 +22,22 @@
         <navigation-case>
             <from-outcome>categoriaadmin</from-outcome>
             <to-view-id>/admin/categoria.xhtml</to-view-id>
-        </navigation-case>        
+        </navigation-case>
         
+                
+        <navigation-case>
+            <from-outcome>index</from-outcome>
+            <to-view-id>index.xhtml</to-view-id>
+        </navigation-case>           
+        
+        <navigation-case>
+            <from-outcome>indexusuario</from-outcome>
+            <to-view-id>/usuario/index.xhtml</to-view-id>
+        </navigation-case> 
+        
+        <navigation-case>
+            <from-outcome>puja</from-outcome>
+            <to-view-id>/usuario/informepuja.xhtml</to-view-id>
+        </navigation-case> 
     </navigation-rule>
 </faces-config>
